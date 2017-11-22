@@ -14,9 +14,10 @@ psick::tp:
   test_enable: true
 
 # First run optional settings
-psick::enable_firstrun: false
+psick::enable_firstrun: true
 psick::firstrun::linux_classes:
   hostname: '::psick::hostname'
+  ec2tagfacts: '::ec2tagfacts'
 psick::firstrun::windows_classes:
   hostname: '::psick::hostname'
 

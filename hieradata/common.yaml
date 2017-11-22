@@ -16,10 +16,11 @@ psick::tp:
   test_enable: true
   data_module: tinydata
 
-# First run optional settings. Here first run mode is disabled
-psick::enable_firstrun: false
+# First run optional settings
+psick::enable_firstrun: true
 psick::firstrun::linux_classes:
   hostname: psick::hostname
+  ec2tagfacts: ::ec2tagfacts
 psick::firstrun::windows_classes:
   hostname: psick::hostname
 
@@ -75,6 +76,7 @@ psick::postfix::tp::resources_hash:
   tp::conf:
     postfix:
       template: 'psick/postfix/main.cf.erb'
+
 psick::postfix::tp::options_hash:
   'mydomain': "%{facts.domain}"
   'myhostname': "%{facts.hostname}"

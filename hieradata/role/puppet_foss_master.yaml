@@ -4,6 +4,6 @@ psick::profiles::linux_classes:
   puppet_autosign: psick::puppet::autosign
 
 psick::puppet::gems::install_puppetserver_gems: true
-psick::puppet::autosign::autosign: on
+psick::puppet::autosign::autosign: 'on'
 psick::puppet::autosign::autosign_match: "*.%{::domain}"
 

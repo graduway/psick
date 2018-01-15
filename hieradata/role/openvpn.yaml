@@ -1,0 +1,19 @@
+---
+psick::profiles::linux_classes:
+  openvpn: openvpn
+openvpn::servers:
+  'winterthur':
+    country: 'IL'
+    province: 'TLV'
+    city: 'Raanana'
+    organization: 'graduway.com'
+    email: 'it@graduway.com'
+#    server: '10.200.200.0 255.255.255.0'
+
+openvpn::client_defaults:
+  server: 'winterthur'
+openvpn::clients:
+  'client1': {}
+  'client2': {}
+  'client3': {}
+

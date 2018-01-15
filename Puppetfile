@@ -60,8 +60,7 @@ mod 'puppetlabs/dummy_service', :latest
 # mod 'puppetlabs/firewall', :latest
 
 # Used by psick::vpn::openvpn
-# mod 'luxflux/openvpn',
-#  :git => 'https://github.com/luxflux/puppet-openvpn'
+mod 'puppet-openvpn', '7.1.0'
 
 # Used by psick::vagrant
 mod 'unibet/vagrant', :latest

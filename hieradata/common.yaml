@@ -24,9 +24,6 @@ psick::firstrun::windows_classes:
 # Common Linux classes
 psick::pre::linux_classes:
   puppet: '::puppet'
-  hostname: '::psick::hostname'
-  hosts: '::psick::hosts::resource'
-  dns: '::psick::dns::resolver'
   repo: '::psick::repo'
   users: '::psick::users'
 psick::base::linux_classes:

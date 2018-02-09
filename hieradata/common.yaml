@@ -22,11 +22,12 @@ psick::firstrun::linux_classes:
   hostname: psick::hostname
   ec2tagfacts: ::ec2tagfacts
 psick::firstrun::windows_classes:
-  hostname: psick::hostname
+  aws-sdk: ::psick::aws::sdk
 
-# PSICK classification for Linux nodes
-# We define the classes we want in pre phase (applied before all the others)
-# and in the base phase (common baseline, applied to all nodes)
+psick::firstrun::windows_reboot: false
+#  hostname: ::psick::hostname
+
+# Common Linux classes
 psick::pre::linux_classes:
   puppet: psick::puppet
   puppet_gems: psick::puppet::gems

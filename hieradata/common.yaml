@@ -19,11 +19,17 @@ psick::firstrun::linux_classes:
   hostname: '::psick::hostname'
   ec2tagfacts: '::ec2tagfacts'
 psick::firstrun::windows_classes:
-  hostname: '::psick::hostname'
+  aws-sdk: '::psick::aws::sdk'
+
+psick::firstrun::windows_reboot: false
+#  hostname: '::psick::hostname'
 
 # Common Linux classes
 psick::pre::linux_classes:
   puppet: '::puppet'
+  hostname: '::psick::hostname'
+  hosts: '::psick::hosts::resource'
+  dns: '::psick::dns::resolver'
   repo: '::psick::repo'
   users: '::psick::users'
 psick::base::linux_classes:

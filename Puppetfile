@@ -28,7 +28,8 @@ mod 'puppetlabs/catalog_preview', :latest
 mod 'puppet/archive', :latest
 mod 'puppetlabs/inifile', :latest
 mod 'graduway/ec2tagfacts',
-  :git => 'https://github.com/graduway/ec2tagfacts'
+  :git => 'https://github.com/graduway/ec2tagfacts',
+  :branch => 'windows'
 
 # Used by psick::puppet::foss_server
 mod 'puppetlabs/postgresql', :latest
@@ -60,7 +61,8 @@ mod 'puppetlabs/dummy_service', :latest
 # mod 'puppetlabs/firewall', :latest
 
 # Used by psick::vpn::openvpn
-mod 'puppet-openvpn', '7.1.0'
+# mod 'luxflux/openvpn',
+#  :git => 'https://github.com/luxflux/puppet-openvpn'
 
 # Used by psick::vagrant
 mod 'unibet/vagrant', :latest
@@ -72,10 +74,10 @@ mod 'puppet/rabbitmq', :latest
 mod 'puppet/staging', :latest
 
 # Used by windows profiles
-# mod 'puppet/windowsfeature', :latest # :git => 'https://forge.puppet.com/voxpupuli/puppet-windowsfeature'
+mod 'puppet/windowsfeature', :latest # :git => 'https://forge.puppet.com/voxpupuli/puppet-windowsfeature'
 # mod 'thoward-windows_firewall', '0.3.4'
 ## mod 'puppet/windows_firewall', :latest # :git => 'https://forge.puppet.com/voxpupuli/puppet-windows_firewall'
-# mod 'puppetlabs/registry', :latest
+mod 'puppetlabs/registry', :latest
 # mod 'puppetlabs/chocolatey', :latest
 # mod 'puppetlabs/acl', :latest
 # mod 'puppetlabs/dsc', :latest

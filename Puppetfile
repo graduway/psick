@@ -29,7 +29,6 @@ mod 'puppet/archive', :latest
 mod 'puppetlabs/inifile', :latest
 mod 'graduway/ec2tagfacts',
   :git => 'https://github.com/graduway/ec2tagfacts',
-  :branch => 'windows'
 
 # Used by psick::puppet::foss_server
 mod 'puppetlabs/postgresql', :latest

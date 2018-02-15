@@ -28,7 +28,7 @@ mod 'puppetlabs/catalog_preview', :latest
 mod 'puppet/archive', :latest
 mod 'puppetlabs/inifile', :latest
 mod 'graduway/ec2tagfacts',
-  :git => 'https://github.com/graduway/ec2tagfacts',
+  :git => 'https://github.com/graduway/ec2tagfacts', 
   :branch => 'master'
 
 # Used by psick::puppet::foss_server
@@ -61,8 +61,7 @@ mod 'puppetlabs/dummy_service', :latest
 # mod 'puppetlabs/firewall', :latest
 
 # Used by psick::vpn::openvpn
-# mod 'luxflux/openvpn',
-#  :git => 'https://github.com/luxflux/puppet-openvpn'
+mod 'puppet-openvpn', '7.1.0'
 
 # Used by psick::vagrant
 mod 'unibet/vagrant', :latest

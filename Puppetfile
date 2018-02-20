@@ -67,8 +67,8 @@ mod 'puppet-openvpn', '7.1.0'
 mod 'unibet/vagrant', :latest
 
 # Used by psick::sensu
-mod 'sensu/sensu', :latest
-mod 'yelp/uchiwa', :latest
+# mod 'sensu/sensu', :latest
+# mod 'yelp/uchiwa', :latest
 mod 'puppet/rabbitmq', :latest
 mod 'puppet/staging', :latest
 
@@ -79,9 +79,9 @@ mod 'puppet/windowsfeature', :latest # :git => 'https://github.com/voxpupuli/pup
 mod 'puppetlabs/registry', :latest
 # mod 'puppetlabs/chocolatey', :latest
 # mod 'puppetlabs/acl', :latest
-# mod 'puppetlabs/dsc', :latest
-# mod 'puppetlabs/powershell', :latest
-# mod 'puppetlabs/reboot', :latest
+mod 'puppetlabs/dsc', :latest
+mod 'puppetlabs/powershell', :latest
+mod 'puppetlabs-reboot', :latest
 # mod 'puppetlabs/wsus_client', :latest
 # mod 'counsyl/windows', :git => 'https://github.com/counsyl/puppet-windows'
 # mod 'trlinkin/domain_membership', :git => 'https://github.com/trlinkin/domain_membership'

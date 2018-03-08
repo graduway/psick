@@ -77,7 +77,7 @@ mod 'puppet/windowsfeature', :latest # :git => 'https://github.com/voxpupuli/pup
 # mod 'thoward-windows_firewall', '0.3.4'
 ## mod 'puppet/windows_firewall', :latest # :git => 'https://github.com/voxpupuli/puppet-windows_firewall'
 mod 'puppetlabs/registry', :latest
-# mod 'puppetlabs/chocolatey', :latest
+mod 'puppetlabs/chocolatey', :latest
 # mod 'puppetlabs/acl', :latest
 mod 'puppetlabs/dsc', :latest
 mod 'puppetlabs/powershell', :latest
@@ -87,4 +87,4 @@ mod 'puppetlabs-reboot', :latest
 # mod 'trlinkin/domain_membership', :git => 'https://github.com/trlinkin/domain_membership'
 
 # Used by psick::users when module=puppetlabs
-# mod 'puppetlabs/accounts', :latest
+mod 'puppetlabs/accounts', :latest

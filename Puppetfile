@@ -66,9 +66,6 @@ mod 'puppet-openvpn', '7.1.0'
 # Used by psick::vagrant
 mod 'unibet/vagrant', :latest
 
-# Used by psick::sensu
-# mod 'sensu/sensu', :latest
-# mod 'yelp/uchiwa', :latest
 mod 'puppet/rabbitmq', :latest
 mod 'puppet/staging', :latest
 
@@ -78,7 +75,7 @@ mod 'puppet/windowsfeature', :latest # :git => 'https://github.com/voxpupuli/pup
 ## mod 'puppet/windows_firewall', :latest # :git => 'https://github.com/voxpupuli/puppet-windows_firewall'
 mod 'puppetlabs/registry', :latest
 mod 'puppetlabs/chocolatey', :latest
-# mod 'puppetlabs/acl', :latest
+mod 'puppetlabs/acl', :latest
 mod 'puppetlabs/dsc', :latest
 mod 'puppetlabs/powershell', :latest
 mod 'puppetlabs-reboot', :latest

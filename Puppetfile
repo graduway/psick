@@ -78,7 +78,7 @@ mod 'puppetlabs/chocolatey', :latest
 mod 'puppetlabs/acl', :latest
 mod 'puppetlabs/dsc', :latest
 mod 'puppetlabs/powershell', :latest
-mod 'puppetlabs-reboot', :latest
+mod 'puppetlabs/reboot', :latest
 # mod 'puppetlabs/wsus_client', :latest
 # mod 'counsyl/windows', :git => 'https://github.com/counsyl/puppet-windows'
 # mod 'trlinkin/domain_membership', :git => 'https://github.com/trlinkin/domain_membership'

@@ -6,13 +6,9 @@ psick::base::windows_classes:
   openssh: psick::openssh
 psick::profiles::windows_classes:
   features: psick::windows::features
-  registry: psick::windows::registry
   services: psick::windows::services
   puppet: psick::puppet::pe_agent
   reboot: psick::reboot
-# FIXME: Why commented? Do we need them?
-#  firewall: windows_firewall
-#  users: psick::users
 
 # Do not try to install openssh on Windows via tp
 psick::openssh::use_tp: false
@@ -24,14 +20,13 @@ psick::packages::packages_list:
   - "tortoisesvn"
   - "putty.install"
   - "git"
-  - "visualstudio2017enterprise"
   - "visualstudio2017-workload-webbuildtools"
-  - "visualstudio2017-workload-netweb"
   - "googlechrome"
   - "netfx-4.6.1-devpack"
   - "nuget.commandline"
   - "notepadplusplus.install"
   - "nodejs-lts"
+  - "webdeploy"
 
 # SSH Key for WEB Github sync
 psick::openssh::configs_hash:
@@ -49,17 +44,6 @@ psick::openssh::keypairs_hash:
     public_key_content: ENC[PKCS7,MIIC/QYJKoZIhvcNAQcDoIIC7jCCAuoCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAjFjDPHQLLDcp+lVM5Mpa+Pnoq02lmEot4z193Wt4bCNudG6l4nV65Az3XJWUWfNFxguAgzvDA9rbGzCx80r8WtyPr7X/m73nPet5z26r2x602uAw7uby5hkiygBv1vkdVSk/EvqP5ESAi3KDA2WuUcPsiRF03SH5w6UnCpVTgvBBYDMPG95EatJD1Jt437+eFXyEpwU2EKnphkrHBJgNWS/k3kLdaUTZ0ARsBtN8PxXwTd31XVvlvJy0KPAvGwOgLqKIhBdyX/RHtE+6OoNY7b18WkOzoKWyKRNmhHh6WLuSSYocQ5ePYRTG7HFAZ7F7CLAvB+ZMIvBwIC0A4V6WFjCCAb4GCSqGSIb3DQEHATAdBglghkgBZQMEASoEEOZIZ94WymhAk9RqDtTn/CGAggGQFxIBRhptt1kCFx5lOX9Sx3ZdgV1/6+XSRmqS9DKKBFyqeXINqF7ehWXRhrRg3e7OWZMjh1HMTuCG64UQKtyEWSYpwK9CjSFLG8dHR3jofSKep+3EpQxSc5GFJvB3kgJO2F25ajNoPxZ3O7KzCqrvs+Y2qz22OFdVK23QxiuxOCBXt3TRQcsfh5d7Vwk2VeSly7rAZ2LtAYfwM9J603XDCeAR6eMdXkDY58rUV8Y52R8D+PzBr+6QejwnLW1mT4c+NzPaqvQ7kB1Z017+vd3Xay/5bcNjL5f4E1Wo3EJ3xn2fW/YZvSZIaIckLDdJCAvMDV8VKMCLTaiLEwLZzVNOerNoyTq5+Mtl/mZHF6HsmEF8FGF8INcImFhbUaA1jwtD/wv38XJuLcVULsa/1dOJ0agfmctoYKlQ/5ZE3PwumsypXN1vN9a5hHvQZFh7ifsscfxqnHT87fcQLalNIio9f0BWh9OBRnEy7GNY087ci9Jbaq3FrZxZNHk/sMKQpw6VE4j/gKgYv4sCj7zFiqaerA==]
     dir_path: 'c:\\Users\\Administrator\\.ssh'
     owner: 'Administrator'
-
-# Useful registry keys: http://www.jasinskionline.com/TechnicalWiki/Useful-Windows-Registry-Keys.ashx?AspxAutoDetectCookieSupport=1
-# Windows registry: http://www.forensicswiki.org/wiki/Windows_Registry
-# Registry Guide for Windows: http://www.pctools.com/guides/registry/
-#
-psick::windows::registry::use_defaults: true
-apsick::windows::registry::keys:
-  'SSL Cipher Suite Order':
-    key: 'HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Cryptography\Configuration\SSL\00010002!Functions'
-    value: 'TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384_P384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P384,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P256,TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA_P384,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P256,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA_P384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA,TLS_RSA_WITH_AES_128_CBC_SHA,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384_P384,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P256,TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256_P384,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384_P384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256_P384,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA_P256,TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA_P384,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA_P256,TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA_P384,TLS_DHE_DSS_WITH_AES_256_CBC_SHA256,TLS_DHE_DSS_WITH_AES_128_CBC_SH'
-    type: 'dword'
 
 psick::puppet::pe_agent::manage_environment: true
 psick::windows::features::use_defaults: true
@@ -98,18 +82,6 @@ windows_firewall::out_policy: 'AllowOutbound'
 windows_firewall::rule_key: 'windows_networks'
 # Purge unmanaged firewall rules
 windows_firewall::purge_rules: false
-
-# Adding users
-psick::users::users_hash:
-  antony:
-    ensure: present
-    comment: 'Antony Gelberg'
-  alessandro:
-    ensure: present
-    comment: 'Alessandro Francheschi'
-  shachar:
-    ensure: present
-    comment: 'Shachar Shapira'
 
 # FireWall rules
 windows_networks:

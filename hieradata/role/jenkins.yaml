@@ -34,17 +34,27 @@ psick::openssh::keypairs_hash:
 # Plugins installation.
 # Check psick/manifests/jenkins/plugin.pp for parameters
 psick::jenkins::plugins:
-  workflow-aggregator:
-    enable: true
-  msbuild:
-    enable: true
-  github:
-    enable: true
-  warnings:
+  blueocean:
     enable: true
   ec2:
     enable: true
-  blueocean:
+  github:
+    enable: true
+  google-login:
+    enable: true
+  monitoring:
+    enable: true
+  msbuild:
+    enable: true
+  rocketchat-notifier:
+    enable: true
+  timestamps:
+    enable: true
+  warnings:
+    enable: true
+  workflow-aggregator:
+    enable: true
+  xunit:
     enable: true
   locale:
     enable: true

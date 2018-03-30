@@ -7,7 +7,7 @@ psick::profiles::windows_classes:
   registry: psick::windows::registry
   services: psick::windows::services
   puppet: psick::puppet::pe_agent
-  webserver: psick::iis
+  webserver:  psick::iis
   reboot: psick::reboot
 # FIXME: Why commented? Do we need them?
 #  firewall: windows_firewall
@@ -17,6 +17,15 @@ psick::profiles::windows_classes:
 # Windows registry: http://www.forensicswiki.org/wiki/Windows_Registry
 # Registry Guide for Windows: http://www.pctools.com/guides/registry/
 #
+iis::iis_features: ['Web-WebServer','Web-Scripting-Tools']
+psick::iis::sites:
+  'Default Web Site':  
+    ensure: 'stopped'
+  'gw-site':  
+    ensure: 'started'
+    applicationpool: 'DefaultAppPool'
+    physicalpath: 'C:\InetPub\WWWRoot'
+
 psick::windows::registry::use_defaults: true
 apsick::windows::registry::keys:
   'SSL Cipher Suite Order':
@@ -44,8 +53,6 @@ psick::windows::features::install:
   'server-media-foundation':
     ensure: present
   'was':
-    ensure: present
-  'was-net-environment':
     ensure: present
   'was-config-apis':
     ensure: present

@@ -52,8 +52,10 @@ psick::base::linux_classes:
 
 # PSICK classification for Windows nodes
 psick::pre::windows_classes:
+  chocolatey: chocolatey
   hosts: psick::hosts::resource
 psick::base::windows_classes:
+  packages: psick::packages
   time: '::psick::time'
 
 # Repo settings

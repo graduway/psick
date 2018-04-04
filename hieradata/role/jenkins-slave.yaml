@@ -1,8 +1,5 @@
 ---
-psick::pre::windows_classes:
-  chocolatey: chocolatey
 psick::base::windows_classes:
-  packages: psick::packages
   openssh: psick::openssh
 psick::profiles::windows_classes:
   features: psick::windows::features
@@ -16,15 +13,12 @@ psick::openssh::use_tp: false
 psick::packages::resource_default_arguments:
   provider: chocolatey
 psick::packages::packages_list:
-  - "chocolatey"
-  - "tortoisesvn"
-  - "putty.install"
   - "git"
-  - "visualstudio2017-workload-webbuildtools"
   - "googlechrome"
+  - "notepadplusplus.install"
+  - "visualstudio2017-workload-webbuildtools"
   - "netfx-4.6.1-devpack"
   - "nuget.commandline"
-  - "notepadplusplus.install"
   - "nodejs-lts"
   - "webdeploy"
 

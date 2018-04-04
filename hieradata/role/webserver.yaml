@@ -1,9 +1,4 @@
 ---
-psick::profiles::linux_classes:
-  webserver: 'psick::apache::tp'
-
-psick::pre::windows_classes:
-  chocolatey: chocolatey
 psick::profiles::windows_classes:
   features: psick::windows::features
   registry: psick::windows::registry
@@ -18,7 +13,7 @@ psick::profiles::windows_classes:
 psick::packages::resource_default_arguments:
   provider: chocolatey
 psick::packages::packages_list:
-  - "chocolatey"
+  - "git"
   - "googlechrome"
   - "notepadplusplus.install"
   - "webdeploy"

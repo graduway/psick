@@ -19,7 +19,6 @@ psick::tp:
 # First run optional settings
 psick::enable_firstrun: true
 psick::firstrun::linux_classes:
-  aws-sdk: '::psick::aws::sdk'
   hostname: 'psick::hostname'
   ec2tagfacts: '::ec2tagfacts'
 psick::firstrun::windows_classes:
@@ -30,6 +29,7 @@ psick::firstrun::windows_reboot: false
 
 # Common Linux classes
 psick::pre::linux_classes:
+  aws-sdk: '::psick::aws::sdk'
   puppet: psick::puppet
   puppet_gems: psick::puppet::gems
   hostname: psick::hostname
@@ -62,6 +62,7 @@ psick::repo::add_defaults: true
 # Time settings
 psick::time::servers:
   - pool.ntp.org
+psick::time::ntpdate::crontab: "*/5 * * * *"
 
 # Timezone settings
 psick::timezone: UTC

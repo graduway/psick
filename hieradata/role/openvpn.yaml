@@ -33,9 +33,17 @@ openvpn::client_defaults:
   server: 'graduway-vpn'
   remote_host: 'vpn.sandbox.graduway.com'
 openvpn::clients:
-  'yacov': {}
-  'antony': {}
+  'yacov.barboi': {}
+  'antony.gelberg': {}
   'shachar': {}
-  'ofir': {}
-  'michael': {}
+  'ofir.arie': {}
+  'michael.zaslavsky': {}
+  'udi.mazor': {}
+  'adi.aziz': {}
+  'liran.shabi': {}
+  'adam.genschaft': {}
+  'inna.azimov': {}
+  'konstantin.bonfield': {}
+  'kathy.davidovich': {}
+  'david.tenne': {}
 

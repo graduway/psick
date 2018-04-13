@@ -1,7 +1,4 @@
 ---
-psick::profiles::linux_classes:
-  webserver: 'psick::apache::tp'
-
 psick::profiles::windows_classes:
   features: psick::windows::features
   registry: psick::windows::registry
@@ -12,6 +9,14 @@ psick::profiles::windows_classes:
 # FIXME: Why commented? Do we need them?
 #  firewall: windows_firewall
 #  users: psick::users
+
+psick::packages::resource_default_arguments:
+  provider: chocolatey
+psick::packages::packages_list:
+  - "git"
+  - "googlechrome"
+  - "notepadplusplus.install"
+  - "webdeploy"
 
 # Useful registry keys: http://www.jasinskionline.com/TechnicalWiki/Useful-Windows-Registry-Keys.ashx?AspxAutoDetectCookieSupport=1
 # Windows registry: http://www.forensicswiki.org/wiki/Windows_Registry

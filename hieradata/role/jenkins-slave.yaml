@@ -22,15 +22,20 @@ psick::packages::packages_list:
   - "nodejs-lts"
   - "webdeploy"
 
-# SSH Key for WEB Github sync
 psick::openssh::configs_hash:
   jenkins:
     path: 'c:\\Users\\Administrator\\.ssh\\config
     create_ssh_dir: true
     options_hash:
-      Host github.com:
-        StrictHostKeyChecking: no
-        UserKnownHostsFile: /dev/null
+      Host github.com *sshconfig:
+        HostName github.com
+        User git
+        StrictHostKeyChecking no
+        UserKnownHostsFile /dev/null
+      Host frontend.sshconfig:
+        IdentityFile ~/.ssh/github-frontend-deploy-read
+      Host web.sshconfig:
+        IdentityFile ~/.ssh/github-web-deploy-read
 
 psick::openssh::keypairs_hash:
   jenkins:

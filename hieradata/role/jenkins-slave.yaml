@@ -32,6 +32,8 @@ psick::openssh::configs_hash:
         User git
         StrictHostKeyChecking no
         UserKnownHostsFile /dev/null
+      Host ci-control.sshconfig:
+        IdentityFile ~/.ssh/github-ci-control-deploy-read
       Host frontend.sshconfig:
         IdentityFile ~/.ssh/github-frontend-deploy-read
       Host web.sshconfig:

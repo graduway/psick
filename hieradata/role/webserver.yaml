@@ -16,6 +16,8 @@ psick::packages::packages_list:
   - "git"
   - "googlechrome"
   - "notepadplusplus.install"
+  - "unzip"
+  - "urlrewrite"
   - "webdeploy"
 
 # Useful registry keys: http://www.jasinskionline.com/TechnicalWiki/Useful-Windows-Registry-Keys.ashx?AspxAutoDetectCookieSupport=1

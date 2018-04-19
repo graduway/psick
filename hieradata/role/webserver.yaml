@@ -1,11 +1,9 @@
 ---
+# Do not try to install openssh on Windows via tp
+psick::openssh::use_tp: false
+
 psick::profiles::windows_classes:
-  features: psick::windows::features
-  registry: psick::windows::registry
-  services: psick::windows::services
-  puppet: psick::puppet::pe_agent
   webserver: psick::iis
-  reboot: psick::reboot
 # FIXME: Why commented? Do we need them?
 #  firewall: windows_firewall
 #  users: psick::users
@@ -20,30 +18,14 @@ psick::packages::packages_list:
   - "urlrewrite"
   - "webdeploy"
 
-# Useful registry keys: http://www.jasinskionline.com/TechnicalWiki/Useful-Windows-Registry-Keys.ashx?AspxAutoDetectCookieSupport=1
-# Windows registry: http://www.forensicswiki.org/wiki/Windows_Registry
-# Registry Guide for Windows: http://www.pctools.com/guides/registry/
-#
-psick::windows::registry::use_defaults: true
-
-psick::puppet::pe_agent::manage_environment: true
-psick::windows::features::use_defaults: true
 psick::windows::features::install:
   'Web-WebServer':
     installsubfeatures: true
-  'file-services':
-    ensure: present
-  'storage-services':
-    ensure: present
-  'net-framework-45-core':
-    ensure: present
   'web-mgmt-tools':
     ensure: present
   'web-mgmt-service':
     ensure: present
   'web-scripting-tools':
-    ensure: present
-  'server-media-foundation':
     ensure: present
   'was':
     ensure: present
@@ -51,28 +33,6 @@ psick::windows::features::install:
     ensure: present
   'was-config-apis':
     ensure: present
-
-psick::windows::services::use_defaults: true
-psick::windows::services::managed:
-  'RemoteRegistry':
-    ensure: 'stopped'
-    enable: 'manual'
-  'Spooler':
-    ensure: 'running'
-    enable: 'true'
-  'TCPIP6':
-    ensure: 'stopped'
-    enable: 'manual'
-
-# Windows firewall settings.
-windows_firewall::profile_state: 'on'
-windows_firewall::in_policy: 'AllowInbound'
-# FIXME: Why commented? Do we need it?
-# windows_firewall::in_policy: 'BlockInbound'
-windows_firewall::out_policy: 'AllowOutbound'
-windows_firewall::rule_key: 'windows_networks'
-# Purge unmanaged firewall rules
-windows_firewall::purge_rules: false
 
 # Testing users
 psick::users::users_hash:
@@ -85,45 +45,3 @@ psick::users::users_hash:
   shachar:
     ensure: present
     comment: 'Shachar Shapira'
-
-# Sample rules
-windows_networks:
-  Remote Desktop - User Mode (TCP-In):
-    description: Inbound rule for the Remote Desktop service to allow RDP traffic.
-      [TCP 3389]
-    application_name: C:\Windows\system32\svchost.exe
-    service_name: termservice
-    protocol: 6
-    local_ports: '3389'
-    remote_ports: "*"
-    local_addresses: "*"
-    remote_addresses: "*"
-    direction: 1
-    interface_types: All
-    enabled: true
-    grouping: "@FirewallAPI.dll,-28752"
-    profiles: 7
-    edge_traversal: false
-    action: 1
-    edge_traversal_options: 0
-  Remote Desktop - User Mode (UDP-In):
-    description: Inbound rule for the Remote Desktop service to allow RDP traffic.
-      [UDP 3389]
-    application_name: C:\Windows\system32\svchost.exe
-    service_name: termservice
-    protocol: 6
-    local_ports: '33891'
-    remote_ports: "*"
-    local_addresses: "*"
-    remote_addresses: "*"
-    direction: 1
-    interface_types: All
-    enabled: true
-  TCP/8080:
-    description: Inbound rule for [TCP 8080]
-    application_name: C:\Windows\system32\svchost.exe
-    service_name: termservice
-    protocol: 6
-    local_ports: '8080'
-    remote_ports: "*"
-    enabled: true

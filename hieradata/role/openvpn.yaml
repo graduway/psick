@@ -31,7 +31,7 @@ openvpn::servers:
 
 openvpn::client_defaults:
   server: 'graduway-vpn'
-  remote_host: 'vpn.sandbox.graduway.com'
+  remote_host: "vpn.%{::env}.graduway.com"
 openvpn::clients:
   'yacov.barboi': {}
   'antony.gelberg': {}

@@ -25,7 +25,6 @@ psick::firstrun::windows_classes:
   aws-sdk: '::psick::aws::sdk'
 
 psick::firstrun::windows_reboot: false
-#  hostname: ::psick::hostname
 
 # Common Linux classes
 psick::pre::linux_classes:
@@ -55,8 +54,80 @@ psick::pre::windows_classes:
   chocolatey: chocolatey
   hosts: psick::hosts::resource
 psick::base::windows_classes:
+  openssh: psick::openssh
   packages: psick::packages
   time: '::psick::time'
+psick::profiles::windows_classes:
+  features: psick::windows::features
+  registry: psick::windows::registry
+  services: psick::windows::services
+  puppet: psick::puppet::pe_agent
+  reboot: psick::reboot
+
+psick::windows::features::use_defaults: true
+psick::windows::features::install:
+  'file-services':
+    ensure: present
+  'storage-services':
+    ensure: present
+
+psick::windows::registry::use_defaults: true
+# Useful registry keys: http://www.jasinskionline.com/TechnicalWiki/Useful-Windows-Registry-Keys.ashx?AspxAutoDetectCookieSupport=1
+# Windows registry: http://www.forensicswiki.org/wiki/Windows_Registry
+# Registry Guide for Windows: http://www.pctools.com/guides/registry/
+
+psick::windows::services::use_defaults: true
+psick::windows::services::managed:
+  'RemoteRegistry':
+    ensure: 'stopped'
+    enable: 'manual'
+  'Spooler':
+    ensure: 'running'
+    enable: 'true'
+  'TCPIP6':
+    ensure: 'stopped'
+    enable: 'manual'
+
+# Windows firewall settings.
+windows_firewall::profile_state: 'on'
+windows_firewall::in_policy: 'AllowInbound'
+windows_firewall::out_policy: 'AllowOutbound'
+windows_firewall::rule_key: 'windows_networks'
+windows_firewall::purge_rules: false
+
+# Windows firewall rules
+windows_networks:
+  Remote Desktop - User Mode (TCP-In):
+    description: Inbound rule for the Remote Desktop service to allow RDP traffic.
+      [TCP 3389]
+    application_name: C:\Windows\system32\svchost.exe
+    service_name: termservice
+    protocol: 6
+    local_ports: '3389'
+    remote_ports: "*"
+    local_addresses: "*"
+    remote_addresses: "*"
+    direction: 1
+    interface_types: All
+    enabled: true
+    grouping: "@FirewallAPI.dll,-28752"
+    profiles: 7
+    edge_traversal: false
+    action: 1
+    edge_traversal_options: 0
+  Remote Desktop - User Mode (UDP-In):
+    description: Inbound rule for the Remote Desktop service to allow RDP traffic.
+      [UDP 3389]
+    application_name: C:\Windows\system32\svchost.exe
+    service_name: termservice
+    protocol: 6
+    local_ports: '3389'
+    remote_ports: "*"
+    local_addresses: "*"
+    remote_addresses: "*"
+    direction: 1
+    interface_types: All
+    enabled: true
 
 # Repo settings
 psick::repo::add_defaults: true
@@ -89,3 +160,4 @@ psick::postfix::tp::options_hash:
 psick::sysctl::settings_hash:
   net.ipv4.conf.all.forwarding: 0
 
+psick::puppet::pe_agent::manage_environment: true

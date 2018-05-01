@@ -20,4 +20,3 @@ psick::openssh::keypairs_hash:
     user: jenkins
     key_name: frontend
     dir_path: "/var/lib/jenkins/.ssh"
-

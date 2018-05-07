@@ -10,6 +10,8 @@ psick::jenkins::disable_setup_wizard: true
 # Plugins installation.
 # Check psick/manifests/jenkins/plugin.pp for parameters
 psick::jenkins::plugins:
+  analysis-collector:
+    enable: true
   blueocean:
     enable: true
   ec2:
@@ -23,6 +25,8 @@ psick::jenkins::plugins:
   msbuild:
     enable: true
   rocketchat-notifier:
+    enable: true
+  tasks-plugin:
     enable: true
   timestamps:
     enable: true

@@ -1,44 +1,121 @@
 ---
+psick::pre::windows_classes:
+  chocolatey: chocolatey
+psick::base::windows_classes:
+  packages: psick::packages
+  openssh: psick::openssh
+psick::profiles::windows_classes:
+  features: psick::windows::features
+  services: psick::windows::services
+  puppet: psick::puppet::pe_agent
+  reboot: psick::reboot
+
 # Do not try to install openssh on Windows via tp
 psick::openssh::use_tp: false
 
 psick::packages::resource_default_arguments:
   provider: chocolatey
 psick::packages::packages_list:
+  - "chocolatey"
+  - "tortoisesvn"
+  - "putty.install"
   - "git"
-  - "googlechrome"
-  - "notepadplusplus.install"
   - "visualstudio2017-workload-webbuildtools"
+  - "googlechrome"
   - "netfx-4.6.1-devpack"
   - "nuget.commandline"
+  - "notepadplusplus.install"
   - "nodejs-lts"
   - "webdeploy"
 
+# SSH Key for WEB Github sync
 psick::openssh::configs_hash:
-  jenkins:
-    path: 'c:\\Users\\Administrator\\.ssh\\config
-    create_ssh_dir: true
+  Administrator:
+    path: 'c:\\Users\\Administrator\\.ssh\\config'
+    create_ssh_dir: false
     options_hash:
-      Host github.com *sshconfig:
-        HostName github.com
-        User git
-        StrictHostKeyChecking no
-        UserKnownHostsFile /dev/null
-      Host ci-control.sshconfig:
-        IdentityFile ~/.ssh/github-ci-control-deploy-read
-      Host frontend.sshconfig:
-        IdentityFile ~/.ssh/github-frontend-deploy-read
-      Host web.sshconfig:
-        IdentityFile ~/.ssh/github-web-deploy-read
+      Host github.com:
+        StrictHostKeyChecking: no
+        UserKnownHostsFile: /dev/null
 
 psick::openssh::keypairs_hash:
-  jenkins:
+  Administrator:
+    create_ssh_dir: false
     private_key_content: ENC[PKCS7,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]
     public_key_content: ENC[PKCS7,MIIC/QYJKoZIhvcNAQcDoIIC7jCCAuoCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAjFjDPHQLLDcp+lVM5Mpa+Pnoq02lmEot4z193Wt4bCNudG6l4nV65Az3XJWUWfNFxguAgzvDA9rbGzCx80r8WtyPr7X/m73nPet5z26r2x602uAw7uby5hkiygBv1vkdVSk/EvqP5ESAi3KDA2WuUcPsiRF03SH5w6UnCpVTgvBBYDMPG95EatJD1Jt437+eFXyEpwU2EKnphkrHBJgNWS/k3kLdaUTZ0ARsBtN8PxXwTd31XVvlvJy0KPAvGwOgLqKIhBdyX/RHtE+6OoNY7b18WkOzoKWyKRNmhHh6WLuSSYocQ5ePYRTG7HFAZ7F7CLAvB+ZMIvBwIC0A4V6WFjCCAb4GCSqGSIb3DQEHATAdBglghkgBZQMEASoEEOZIZ94WymhAk9RqDtTn/CGAggGQFxIBRhptt1kCFx5lOX9Sx3ZdgV1/6+XSRmqS9DKKBFyqeXINqF7ehWXRhrRg3e7OWZMjh1HMTuCG64UQKtyEWSYpwK9CjSFLG8dHR3jofSKep+3EpQxSc5GFJvB3kgJO2F25ajNoPxZ3O7KzCqrvs+Y2qz22OFdVK23QxiuxOCBXt3TRQcsfh5d7Vwk2VeSly7rAZ2LtAYfwM9J603XDCeAR6eMdXkDY58rUV8Y52R8D+PzBr+6QejwnLW1mT4c+NzPaqvQ7kB1Z017+vd3Xay/5bcNjL5f4E1Wo3EJ3xn2fW/YZvSZIaIckLDdJCAvMDV8VKMCLTaiLEwLZzVNOerNoyTq5+Mtl/mZHF6HsmEF8FGF8INcImFhbUaA1jwtD/wv38XJuLcVULsa/1dOJ0agfmctoYKlQ/5ZE3PwumsypXN1vN9a5hHvQZFh7ifsscfxqnHT87fcQLalNIio9f0BWh9OBRnEy7GNY087ci9Jbaq3FrZxZNHk/sMKQpw6VE4j/gKgYv4sCj7zFiqaerA==]
     dir_path: 'c:\\Users\\Administrator\\.ssh'
-    owner: 'Administrator'
 
+psick::puppet::pe_agent::manage_environment: true
+psick::windows::features::use_defaults: true
+psick::windows::features::install:
+  'file-services':
+    ensure: present
+  'storage-services':
+    ensure: present
+  'net-framework-45-core':
+    ensure: present
+  'was':
+    ensure: present
+  'was-net-environment':
+    ensure: present
+  'was-config-apis':
+    ensure: present
+
+psick::windows::services::use_defaults: true
+psick::windows::services::managed:
+  'RemoteRegistry':
+    ensure: 'stopped'
+    enable: 'manual'
+  'Spooler':
+    ensure: 'running'
+    enable: 'true'
+  'TCPIP6':
+    ensure: 'stopped'
+    enable: 'manual'
+
+# Windows firewall settings.
+windows_firewall::profile_state: 'on'
+windows_firewall::in_policy: 'AllowInbound'
+# FIXME: Why commented? Do we need it?
+# windows_firewall::in_policy: 'BlockInbound'
+windows_firewall::out_policy: 'AllowOutbound'
+windows_firewall::rule_key: 'windows_networks'
+# Purge unmanaged firewall rules
+windows_firewall::purge_rules: false
+
+# FireWall rules
 windows_networks:
+  Remote Desktop - User Mode (TCP-In):
+    description: Inbound rule for the Remote Desktop service to allow RDP traffic.
+      [TCP 3389]
+    application_name: C:\Windows\system32\svchost.exe
+    service_name: termservice
+    protocol: 6
+    local_ports: '3389'
+    remote_ports: "*"
+    local_addresses: "*"
+    remote_addresses: "*"
+    direction: 1
+    interface_types: All
+    enabled: true
+    grouping: "@FirewallAPI.dll,-28752"
+    profiles: 7
+    edge_traversal: false
+    action: 1
+    edge_traversal_options: 0
+  Remote Desktop - User Mode (UDP-In):
+    description: Inbound rule for the Remote Desktop service to allow RDP traffic.
+      [UDP 3389]
+    application_name: C:\Windows\system32\svchost.exe
+    service_name: termservice
+    protocol: 6
+    local_ports: '3389'
+    remote_ports: "*"
+    local_addresses: "*"
+    remote_addresses: "*"
+    direction: 1
+    interface_types: All
+    enabled: true
   TCP/8080:
     description: Inbound rule for [TCP 8080]
     application_name: C:\Windows\system32\svchost.exe

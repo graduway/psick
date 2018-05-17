@@ -2,6 +2,7 @@
 psick::pre::windows_classes:
   chocolatey: chocolatey
 psick::base::windows_classes:
+  jenkins_slave: profile::ssh_windows
   packages: psick::packages
   openssh: psick::openssh
 psick::profiles::windows_classes:

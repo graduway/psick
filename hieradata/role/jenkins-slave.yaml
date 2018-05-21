@@ -17,7 +17,7 @@ psick::openssh::use_tp: false
 psick::packages::resource_default_arguments:
   provider: chocolatey
 psick::packages::packages_list:
-  - "chocolatey"
+  - "awscli"
   - "tortoisesvn"
   - "putty.install"
   - "git"
@@ -27,7 +27,9 @@ psick::packages::packages_list:
   - "nuget.commandline"
   - "notepadplusplus.install"
   - "nodejs-lts"
+  - "python3"
   - "webdeploy"
+  - "zip"
 
 # SSH Key for WEB Github sync
 

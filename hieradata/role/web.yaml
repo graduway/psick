@@ -11,12 +11,15 @@ psick::profiles::windows_classes:
 psick::packages::resource_default_arguments:
   provider: chocolatey
 psick::packages::packages_list:
+  - "awscli"
   - "git"
   - "googlechrome"
   - "notepadplusplus.install"
+  - "python3"
   - "unzip"
   - "urlrewrite"
   - "webdeploy"
+  - "zip"
 
 psick::windows::features::install:
   'Web-WebServer':

@@ -6,7 +6,6 @@ psick::base::linux_classes:
 # Enabled and configure scm-sync plugin
 psick::jenkins::disable_setup_wizard: true
 psick::jenkins::scm_sync_repository_url: git@github.com:graduway/jenkins-config-sandbox.git
-psick::jenkins::scm_sync_repository_host: github.com
 
 ### SSH Key for SCM Sync
 psick::openssh::configs_hash:

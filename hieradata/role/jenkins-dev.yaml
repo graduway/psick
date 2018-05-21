@@ -5,7 +5,6 @@ psick::base::linux_classes:
 
 # Enabled and configure scm-sync plugin
 psick::jenkins::scm_sync_repository_url: git@github.com:graduway/jenkins-config-dev.git
-psick::jenkins::scm_sync_repository_host: github.com
 
 # Generate jenkins ssh keypair
 #psick::jenkins::ssh_keys_generate: true

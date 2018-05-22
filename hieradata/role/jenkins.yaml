@@ -80,8 +80,6 @@ psick::jenkins::plugins:
     enable: true
   msbuild:
     enable: true
-  rocketchat-notifier:
-    enable: true
   tasks-plugin:
     enable: true
   timestamps:
@@ -92,6 +90,10 @@ psick::jenkins::plugins:
     enable: true
   xunit:
     enable: true
+  pipeline-utility-steps-plugin:
+    enable: true
   locale:
+    enable: true
+  s3:
     enable: true
 

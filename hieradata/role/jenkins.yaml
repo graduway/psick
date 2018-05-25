@@ -6,6 +6,7 @@ psick::profiles::linux_classes:
   jenkins: ''
 
 psick::jenkins::disable_setup_wizard: true
+psick::jenkins::admin_password: 'aam5oaQu'
 
 ### SSH Key for SCM Sync
 psick::openssh::configs_hash:
@@ -80,8 +81,6 @@ psick::jenkins::plugins:
     enable: true
   msbuild:
     enable: true
-  rocketchat-notifier:
-    enable: true
   tasks-plugin:
     enable: true
   timestamps:
@@ -92,6 +91,10 @@ psick::jenkins::plugins:
     enable: true
   xunit:
     enable: true
+  pipeline-utility-steps-plugin:
+    enable: true
   locale:
+    enable: true
+  s3:
     enable: true
 

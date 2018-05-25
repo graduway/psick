@@ -6,6 +6,7 @@ psick::profiles::linux_classes:
   jenkins: ''
 
 psick::jenkins::disable_setup_wizard: true
+psick::jenkins::admin_password: 'aam5oaQu'
 
 ### SSH Key for SCM Sync
 psick::openssh::configs_hash:

@@ -77,9 +77,15 @@ psick::jenkins::plugins:
     enable: true
   google-login:
     enable: true
+  locale:
+    enable: true
   monitoring:
     enable: true
   msbuild:
+    enable: true
+  pipeline-utility-steps:
+    enable: true
+  s3:
     enable: true
   tasks-plugin:
     enable: true
@@ -90,11 +96,5 @@ psick::jenkins::plugins:
   workflow-aggregator:
     enable: true
   xunit:
-    enable: true
-  pipeline-utility-steps:
-    enable: true
-  locale:
-    enable: true
-  s3:
     enable: true
 

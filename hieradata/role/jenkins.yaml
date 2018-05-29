@@ -91,7 +91,7 @@ psick::jenkins::plugins:
     enable: true
   xunit:
     enable: true
-  pipeline-utility-steps-plugin:
+  pipeline-utility-steps:
     enable: true
   locale:
     enable: true

@@ -18,6 +18,7 @@ psick::packages::resource_default_arguments:
   provider: chocolatey
 psick::packages::packages_list:
   - "awscli"
+  - "sqlserver-cmdlineutils"
   - "tortoisesvn"
   - "putty.install"
   - "git"
@@ -28,6 +29,7 @@ psick::packages::packages_list:
   - "notepadplusplus.install"
   - "nodejs-lts"
   - "python3"
+  - "unzip"
   - "webdeploy"
   - "zip"
 

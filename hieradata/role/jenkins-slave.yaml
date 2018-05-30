@@ -29,6 +29,7 @@ psick::packages::packages_list:
   - "notepadplusplus.install"
   - "nodejs-lts"
   - "python3"
+  - "unzip"
   - "webdeploy"
   - "zip"
 

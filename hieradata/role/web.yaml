@@ -2,11 +2,17 @@
 # Do not try to install openssh on Windows via tp
 psick::openssh::use_tp: false
 
-psick::profiles::windows_classes:
+psick::base::windows_classes:
+  chocolatey: chocolatey
+psick::pre::windows_classes:
   webserver: psick::iis
-# FIXME: Why commented? Do we need them?
-#  firewall: windows_firewall
-#  users: psick::users
+  chocolatey: ''
+
+psick::iis::features:
+  'Web-WebServer':
+    ensure: present
+  'Web-Scripting-Tools':
+    ensure: present
 
 psick::packages::resource_default_arguments:
   provider: chocolatey
@@ -22,13 +28,9 @@ psick::packages::packages_list:
   - "zip"
 
 psick::windows::features::install:
-  'Web-WebServer':
-    installsubfeatures: true
   'web-mgmt-tools':
     ensure: present
   'web-mgmt-service':
-    ensure: present
-  'web-scripting-tools':
     ensure: present
   'was':
     ensure: present
@@ -36,15 +38,3 @@ psick::windows::features::install:
     ensure: present
   'was-config-apis':
     ensure: present
-
-# Testing users
-psick::users::users_hash:
-  antony:
-    ensure: present
-    comment: 'Antony Gelberg'
-  alessandro:
-    ensure: present
-    comment: 'Alessandro Francheschi'
-  shachar:
-    ensure: present
-    comment: 'Shachar Shapira'

@@ -21,7 +21,7 @@ mod 'puppetlabs/concat', '3.0.0' # postgresql requires concat < 3.0.0
 mod 'puppetlabs/stdlib', :latest
 mod 'puppetlabs/vcsrepo', :latest
 mod 'puppetlabs/firewall', :latest
-# mod 'puppetlabs/aws', :latest
+mod 'puppetlabs-aws', :latest
 mod 'jdowning/rbenv', :latest
 mod 'trlinkin/noop', :latest
 mod 'puppetlabs/catalog_preview', :latest
@@ -61,7 +61,10 @@ mod 'puppetlabs/dummy_service', :latest
 # mod 'puppetlabs/firewall', :latest
 
 # Used by psick::vpn::openvpn
-mod 'puppet-openvpn', '7.1.0'
+# mod 'puppet-openvpn', '7.1.0'
+mod 'openvpn',
+  :git => 'https://github.com/graduway/puppet-openvpn.git',
+  :branch => 'mail'
 
 # Used by psick::vagrant
 mod 'unibet/vagrant', :latest
@@ -87,3 +90,4 @@ mod 'puppetlabs-iis', :latest
 
 # Used by psick::users when module=puppetlabs
 mod 'puppetlabs/accounts', :latest
+mod 'oxc-postfix', '1.0.0'

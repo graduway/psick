@@ -1,8 +1,16 @@
 ---
+psick::base::linux_classes:
+  packages: psick::packages
+  mail: postfix
 psick::profiles::linux_classes:
   openvpn: openvpn
   fw: psick::firewall::iptables
 
+
+psick::packages::packages_list:
+  - mailutils
+  - sharutils
+  - python-minimal
 
 psick::firewall::iptables::extra_rules:
   - '-I INPUT -p tcp -m state --state NEW -m tcp --dport 1194 -j ACCEPT'
@@ -32,10 +40,12 @@ openvpn::servers:
 openvpn::client_defaults:
   server: 'graduway-vpn'
   remote_host: "vpn.%{::env}.graduway.com"
+  mail_from: "devops@graduway.com"
 openvpn::clients:
   'yacov.barboi': {}
   'antony.gelberg': {}
-  'shachar': {}
+  'shachar': 
+    mail_address: "shapi78@gmail.com"
   'ofir.arie': {}
   'michael.zaslavsky': {}
   'udi.mazor': {}
@@ -47,3 +57,15 @@ openvpn::clients:
   'kathy.davidovich': {}
   'david.tenne': {}
 
+postfix::main_config:
+  myorigin: '$mydomain'
+  myhostname: "vpn.%{::env}.graduway.com"
+  mydomain: "%{::env}.graduway.com"
+  append_dot_mydomain: "no"
+  smtp_sasl_auth_enable: "yes"
+  smtp_sasl_password_maps: ENC[PKCS7,MIIBygYJKoZIhvcNAQcDoIIBuzCCAbcCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAmxTdIAG5+BiOf0PyXQVGGE47Ok8SmlusCYwcoxe3U7vx8GpvE94SRcbmJeZTtjK4OPKAkonhrAHt+agG/27a/lV397k7zbkYGlOsRLtrw6npMPNCMi1WoBN2hg6M14K/r8REZVJsD9bI88Q5Uz0DympfSR08eX3UaJtBgx0Dzg3a1TkX6BnWidvzLCAV1Rj9eWpLB6Y1q8zIMwn3gysm6/yvHxuig/p9hw97/+pljdc/TNzQLZkIoswKjaa2fruZyWQ2hztfRzBjx7SXz/zd2qoboyEUrsiNJfqYZZ8D5YoU4oD2GZ+5IaF8YexsDD1RuZPVlxMzAmKnSfv/GnTQ3TCBjAYJKoZIhvcNAQcBMB0GCWCGSAFlAwQBKgQQkpMmHtMH2gawN3iCHrhXTIBgknUV6e1MtMxFW1g1dkdkEdhX5kiXy3R8jNdWDnCnbu9y3wvChaifb8zTLaqhR8yuiJLVvR8pS7zI2FZ+g5X4bhBXTKzDNSAGbsptTsmh8bw4rOwI71brWMrkWfXNKpry]
+  smtp_sasl_security_options: "noanonymous"
+  smtp_sasl_tls_security_options: "noanonymous"
+  smtp_tls_security_level: encrypt
+  header_size_limit: 4096000
+  relayhost: "[smtp.sendgrid.net]:587"

@@ -5,6 +5,7 @@ psick::base::linux_classes:
 psick::profiles::linux_classes:
   openvpn: openvpn
   fw: psick::firewall::iptables
+  fail2ban: fail2ban
 
 
 psick::packages::packages_list:
@@ -36,6 +37,9 @@ openvpn::servers:
     email: 'development@graduway.com'
     server: '192.168.200.0 255.255.255.0'
     push: ["route 172.16.0.0 255.255.0.0"]
+
+openvpn::server_defaults:
+ logfile: "/var/log/openvpn.log"
 
 openvpn::client_defaults:
   server: 'graduway-vpn'
@@ -69,3 +73,20 @@ postfix::main_config:
   smtp_tls_security_level: encrypt
   header_size_limit: 4096000
   relayhost: "[smtp.sendgrid.net]:587"
+
+fail2ban::package_ensure: 'latest'
+fail2ban::config_file_template: "fail2ban/%{::lsbdistcodename}/etc/fail2ban/jail.conf.erb"
+fail2ban::sender: "fail2ban@graduway.com"
+fail2ban::email: "shapi@gmail.com"
+fail2ban::jails:
+  - 'ssh'
+  - 'ssh-ddos'
+fail2ban::custom_jails:
+  'openvpn':
+    filter_failregex: '* <HOST>:[0-9]{4,5} Connection reset, restarting \[[0-9]{1,2}\]'
+    port: "1194"
+    logpath: '/var/log/openvpn.log'
+    maxretry: 3
+    protocol: "udp"
+    findtime: 120
+    bantime: 1200

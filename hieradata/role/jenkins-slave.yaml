@@ -3,6 +3,7 @@ psick::pre::windows_classes:
   chocolatey: chocolatey
 psick::base::windows_classes:
   jenkins_slave: profile::ssh_windows
+  dns: profile::route53
   packages: psick::packages
   openssh: psick::openssh
 psick::profiles::windows_classes:
@@ -10,6 +11,10 @@ psick::profiles::windows_classes:
   services: psick::windows::services
   puppet: psick::puppet::pe_agent
   reboot: psick::reboot
+profile::route53::environment: "%{::env}"
+profile::route53::zone: 'graduway.com'
+profile::route53::hostname: "%{::role}"
+profile::route53::ip_address: "%{::ipaddress}"
 
 # Do not try to install openssh on Windows via tp
 psick::openssh::use_tp: false

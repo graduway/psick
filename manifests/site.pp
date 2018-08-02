@@ -24,6 +24,12 @@ if $ec2_tag_env {
 if $ec2_tag_name {
   $host_name = $ec2_tag_name
 }
+if $ec2_tag_region_env {
+  $region_env = $ec2_tag_region_env
+}
+if $ec2_tag_network {
+  $vpc_subnet = $ec2_tag_network
+}
 if defined('$facts') and defined('$trusted') {
   if $trusted['extensions']['pp_role'] and !has_key($facts,'role') {
     $role = $trusted['extensions']['pp_role']

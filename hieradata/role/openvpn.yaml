@@ -36,15 +36,17 @@ openvpn::servers:
     organization: 'Graduway'
     email: 'development@graduway.com'
     server: '192.168.200.0 255.255.255.0'
-    push: ["route 172.16.0.0 255.255.0.0"]
+    push: ["route %{::vpc_subnet}"]
+
 
 openvpn::server_defaults:
  logfile: "/var/log/openvpn.log"
 
 openvpn::client_defaults:
   server: 'graduway-vpn'
-  remote_host: "vpn.%{::env}.graduway.com"
+  remote_host: "vpn.%{::region_env}.graduway.com"
   mail_from: "devops@graduway.com"
+  mail_domain: "graduway.com"
 openvpn::clients:
   'yacov.barboi': {}
   'antony.gelberg': {}

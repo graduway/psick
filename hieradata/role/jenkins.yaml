@@ -2,12 +2,16 @@
 psick::base::linux_classes:
   jenkins: psick::jenkins
   openssh: psick::openssh
+  profile_env: profile::profile
 psick::profiles::linux_classes:
   jenkins: ''
 
 psick::jenkins::disable_setup_wizard: true
 psick::jenkins::admin_password: 'aam5oaQu'
 
+profile::profile::scripts: 
+  ec2_tags:
+    template: 'profile/aws.tags.erb'
 ### SSH Key for SCM Sync
 psick::openssh::configs_hash:
   jenkins-config:

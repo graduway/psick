@@ -29,7 +29,8 @@ mod 'puppetlabs/catalog_preview', :latest
 mod 'puppet/archive', :latest
 mod 'puppetlabs/inifile', :latest
 mod 'graduway/ec2tagfacts',
-  :git => 'https://github.com/graduway/ec2tagfacts'
+  :git => 'https://github.com/graduway/ec2tagfacts',
+  :branch => 'master'
 
 # Used by psick::puppet::foss_server
 mod 'puppetlabs/postgresql', :latest
@@ -65,7 +66,7 @@ mod 'puppetlabs/dummy_service', :latest
 # mod 'puppet-openvpn', '7.1.0'
 mod 'openvpn',
   :git => 'https://github.com/graduway/puppet-openvpn.git',
-  :branch => 'mail'
+  :branch => 'mail-env'
 
 mod 'fail2ban',
   :git => 'https://github.com/graduway/puppet-fail2ban.git',
@@ -97,3 +98,4 @@ mod 'puppetlabs-iis', :latest
 mod 'puppetlabs/accounts', :latest
 mod 'oxc-postfix', '1.0.0'
 ## mod 'puppet-fail2ban', '2.2.0'
+mod 'example42-profile', '2.0.4'

@@ -16,7 +16,7 @@ psick::packages::packages_list:
 psick::firewall::iptables::extra_rules:
   - '-I INPUT -p tcp -m state --state NEW -m tcp --dport 1194 -j ACCEPT'
 psick::firewall::iptables::nat_rules:
-  - '-I POSTROUTING -s 192.168.200.0/24 -j MASQUERADE'
+  - "-I POSTROUTING -s 10.%{::vpn_octets}.0/24 -j MASQUERADE"
 psick::firewall::iptables::manage_ipv6: false
 
 psick::sysctl::settings_hash:
@@ -35,16 +35,18 @@ openvpn::servers:
     city: 'Raanana'
     organization: 'Graduway'
     email: 'development@graduway.com'
-    server: '192.168.200.0 255.255.255.0'
-    push: ["route 172.16.0.0 255.255.0.0"]
+    server: "10.%{::vpn_octets}.0 255.255.255.0"
+    push: ["route %{::vpc_subnet}"]
 
 openvpn::server_defaults:
  logfile: "/var/log/openvpn.log"
 
 openvpn::client_defaults:
   server: 'graduway-vpn'
-  remote_host: "vpn.%{::env}.graduway.com"
+  remote_host: "vpn.%{::region_env}.graduway.com"
   mail_from: "devops@graduway.com"
+  mail_domain: "graduway.com"
+  environment: "%{::region_env}"
 openvpn::clients:
   'yacov.barboi': {}
   'antony.gelberg': {}

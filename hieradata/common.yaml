@@ -30,6 +30,7 @@ psick::firstrun::windows_reboot: false
 psick::pre::linux_classes:
   aws-sdk: '::psick::aws::sdk'
   puppet: psick::puppet
+  puppet_tp: psick::puppet::tp
   puppet_gems: psick::puppet::gems
   hostname: psick::hostname
   hosts: psick::hosts::resource
@@ -160,4 +161,11 @@ psick::postfix::tp::options_hash:
 psick::sysctl::settings_hash:
   net.ipv4.conf.all.forwarding: 0
 
-psick::puppet::pe_agent::manage_environment: true
+psick::puppet::tp::auto_prereq: false
+psick::puppet::tp::resources_hash:
+  tp::conf:
+    puppet-agent:
+      template: profile/puppet.conf.erb 
+psick::puppet::tp::options_hash:
+  server: "puppet.%{::region_env}.graduway.com"
+  noop: false

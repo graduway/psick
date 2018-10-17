@@ -79,7 +79,7 @@ postfix::main_config:
 fail2ban::package_ensure: 'latest'
 fail2ban::config_file_template: "fail2ban/%{::lsbdistcodename}/etc/fail2ban/jail.conf.erb"
 fail2ban::sender: "fail2ban@graduway.com"
-fail2ban::email: "shachar.shapira@automat-it.com"
+fail2ban::email: "shapi78@gmail.com"
 fail2ban::jails:
   - 'ssh'
   - 'ssh-ddos'

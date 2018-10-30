@@ -66,7 +66,7 @@ openvpn::clients:
 postfix::main_config:
   myorigin: '$mydomain'
   myhostname: "vpn.%{::env}.graduway.com"
-  mydomain: "%{::env}.graduway.com"
+  mydomain: "graduway.com"
   append_dot_mydomain: "no"
   smtp_sasl_auth_enable: "yes"
   smtp_sasl_password_maps: ENC[PKCS7,MIIBygYJKoZIhvcNAQcDoIIBuzCCAbcCAQAxggEhMIIBHQIBADAFMAACAQEwDQYJKoZIhvcNAQEBBQAEggEAmxTdIAG5+BiOf0PyXQVGGE47Ok8SmlusCYwcoxe3U7vx8GpvE94SRcbmJeZTtjK4OPKAkonhrAHt+agG/27a/lV397k7zbkYGlOsRLtrw6npMPNCMi1WoBN2hg6M14K/r8REZVJsD9bI88Q5Uz0DympfSR08eX3UaJtBgx0Dzg3a1TkX6BnWidvzLCAV1Rj9eWpLB6Y1q8zIMwn3gysm6/yvHxuig/p9hw97/+pljdc/TNzQLZkIoswKjaa2fruZyWQ2hztfRzBjx7SXz/zd2qoboyEUrsiNJfqYZZ8D5YoU4oD2GZ+5IaF8YexsDD1RuZPVlxMzAmKnSfv/GnTQ3TCBjAYJKoZIhvcNAQcBMB0GCWCGSAFlAwQBKgQQkpMmHtMH2gawN3iCHrhXTIBgknUV6e1MtMxFW1g1dkdkEdhX5kiXy3R8jNdWDnCnbu9y3wvChaifb8zTLaqhR8yuiJLVvR8pS7zI2FZ+g5X4bhBXTKzDNSAGbsptTsmh8bw4rOwI71brWMrkWfXNKpry]
@@ -79,7 +79,7 @@ postfix::main_config:
 fail2ban::package_ensure: 'latest'
 fail2ban::config_file_template: "fail2ban/%{::lsbdistcodename}/etc/fail2ban/jail.conf.erb"
 fail2ban::sender: "fail2ban@graduway.com"
-fail2ban::email: "shapi@gmail.com"
+fail2ban::email: "shapi78@gmail.com"
 fail2ban::jails:
   - 'ssh'
   - 'ssh-ddos'

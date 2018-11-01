@@ -167,5 +167,5 @@ psick::puppet::tp::resources_hash:
     puppet-agent:
       template: profile/puppet.conf.erb 
 psick::puppet::tp::options_hash:
-  server: "puppet.%{::region_env}.graduway.com"
+  server: "puppet.%{::env_region}.graduway.com"
   noop: false

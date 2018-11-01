@@ -43,10 +43,10 @@ openvpn::server_defaults:
 
 openvpn::client_defaults:
   server: 'graduway-vpn'
-  remote_host: "vpn.%{::region_env}.graduway.com"
+  remote_host: "vpn.%{::env_region}.graduway.com"
   mail_from: "devops@graduway.com"
   mail_domain: "graduway.com"
-  environment: "%{::region_env}"
+  environment: "%{::env_region}"
 openvpn::clients:
   'yacov.barboi': {}
   'antony.gelberg': {}

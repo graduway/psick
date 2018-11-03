@@ -48,20 +48,20 @@ openvpn::client_defaults:
   mail_domain: "graduway.com"
   environment: "%{::env_region}"
 openvpn::clients:
-  'yacov.barboi': {}
+  'adam.genschaft': {}
+  'adi.efrat': {}
+  'amir.algazi': {}
+  'alexei.krupnik': {}
   'antony.gelberg': {}
+  'inna.azimov': {}
+  'kathy.davidovich': {}
+  'liran.shabi': {}
+  'michael.zaslavsky': {}
+  'mor.smadja': {}
+  'ofir.arie': {}
   'shachar': 
     mail_address: "shapi78@gmail.com"
-  'ofir.arie': {}
-  'michael.zaslavsky': {}
   'udi.mazor': {}
-  'adi.aziz': {}
-  'liran.shabi': {}
-  'adam.genschaft': {}
-  'inna.azimov': {}
-  'konstantin.bonfield': {}
-  'kathy.davidovich': {}
-  'david.tenne': {}
 
 postfix::main_config:
   myorigin: '$mydomain'

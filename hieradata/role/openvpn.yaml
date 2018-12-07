@@ -58,7 +58,6 @@ openvpn::clients:
   'liran.shabi': {}
   'michael.zaslavsky': {}
   'mor.smadja': {}
-  'ofir.arie': {}
   'shachar': 
     mail_address: "shapi78@gmail.com"
   'udi.mazor': {}

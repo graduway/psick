@@ -3,7 +3,7 @@
 mod 'graduway/hieradata',
   :git => 'https://github.com/graduway/psick-hieradata',
   :branch => :control_branch,
-  :default_branch => 'production'
+  :default_branch => 'env_region'
 
 # External modules to installed by r10k in modules/ dir
 # Here mostly at latest version for sample purposes.

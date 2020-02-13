@@ -25,17 +25,26 @@ install_gems() {
   $sudo_command gem install deep_merge --no-ri --no-rdoc
   $sudo_command gem install hiera-eyaml --no-ri --no-rdoc
   $sudo_command gem install r10k --no-ri --no-rdoc
+  $sudo_command /opt/puppetlabs/puppet/bin/gem install aws-sdk --no-ri --no-rdoc
+  $sudo_command /opt/puppetlabs/puppet/bin/gem install ipaddress --no-ri --no-rdoc
+  $sudo_command /opt/puppetlabs/puppet/bin/gem install ruby-pwsh --no-ri --no-rdoc
   if [ -x /opt/puppetlabs/puppet/bin/gem ]; then
     echo_subtitle "Installing with /opt/puppetlabs/puppet/bin/gem"
     $sudo_command /opt/puppetlabs/puppet/bin/gem install deep_merge --no-ri --no-rdoc
     $sudo_command /opt/puppetlabs/puppet/bin/gem install hiera-eyaml --no-ri --no-rdoc
     $sudo_command /opt/puppetlabs/puppet/bin/gem install r10k --no-ri --no-rdoc
+    $sudo_command /opt/puppetlabs/puppet/bin/gem install aws-sdk --no-ri --no-rdoc
+    $sudo_command /opt/puppetlabs/puppet/bin/gem install ipaddress --no-ri --no-rdoc
+    $sudo_command /opt/puppetlabs/puppet/bin/gem install ruby-pwsh --no-ri --no-rdoc
   fi
   if [ -x /opt/puppetlabs/bin/puppetserver ]; then
     echo_subtitle "Installing with /opt/puppetlabs/bin/puppetserver"
     $sudo_command /opt/puppetlabs/bin/puppetserver gem install deep_merge
     $sudo_command /opt/puppetlabs/bin/puppetserver gem install hiera-eyaml
     $sudo_command /opt/puppetlabs/bin/puppetserver gem install r10k
+    $sudo_command /opt/puppetlabs/puppet/bin/gem install aws-sdk
+    $sudo_command /opt/puppetlabs/puppet/bin/gem install ipaddress 
+    $sudo_command /opt/puppetlabs/puppet/bin/gem install ruby-pwsh 
   fi
 }
 
